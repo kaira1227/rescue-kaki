@@ -1,0 +1,168 @@
+/* stylelint-disable */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* IGNIS Tactical Dark Theme - Fire/Emergency color scheme for field conditions */
+
+@layer base {
+  :root {
+    --radius: 0.25rem;
+
+    /* IGNIS Tactical Dark Theme (always dark) */
+    --background: 0 0% 4%;            /* #0a0a0a charcoal black */
+    --foreground: 0 0% 91%;           /* #e8e8e8 light text */
+
+    --card: 225 10% 17%;              /* #2a2d34 card bg */
+    --card-foreground: 0 0% 91%;
+
+    --popover: 225 10% 12%;           /* #1a1d24 */
+    --popover-foreground: 0 0% 91%;
+
+    --primary: 18 100% 60%;           /* #ff6b35 tactical orange */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 225 10% 17%;
+    --secondary-foreground: 0 0% 91%;
+
+    --muted: 225 8% 20%;
+    --muted-foreground: 220 9% 61%;   /* #9ca3af */
+
+    --accent: 165 100% 43%;           /* #00d9a3 signal green */
+    --accent-foreground: 0 0% 4%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 225 10% 22%;            /* #3a3d44 */
+    --input: 225 12% 11%;             /* #1a1d24 */
+    --ring: 18 100% 60%;
+
+    --chart-1: 18 100% 60%;
+    --chart-2: 165 100% 43%;
+    --chart-3: 220 9% 61%;
+    --chart-4: 0 72% 51%;
+    --chart-5: 45 100% 55%;
+
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 0 0% 91%;
+    --sidebar-primary: 18 100% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 225 10% 17%;
+    --sidebar-accent-foreground: 0 0% 91%;
+    --sidebar-border: 225 10% 22%;
+    --sidebar-ring: 18 100% 60%;
+  }
+
+  .dark {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 91%;
+    --card: 225 10% 17%;
+    --card-foreground: 0 0% 91%;
+    --popover: 225 10% 12%;
+    --popover-foreground: 0 0% 91%;
+    --primary: 18 100% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 225 10% 17%;
+    --secondary-foreground: 0 0% 91%;
+    --muted: 225 8% 20%;
+    --muted-foreground: 220 9% 61%;
+    --accent: 165 100% 43%;
+    --accent-foreground: 0 0% 4%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 225 10% 22%;
+    --input: 225 12% 11%;
+    --ring: 18 100% 60%;
+    --chart-1: 18 100% 60%;
+    --chart-2: 165 100% 43%;
+    --chart-3: 220 9% 61%;
+    --chart-4: 0 72% 51%;
+    --chart-5: 45 100% 55%;
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 0 0% 91%;
+    --sidebar-primary: 18 100% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 225 10% 17%;
+    --sidebar-accent-foreground: 0 0% 91%;
+    --sidebar-border: 225 10% 22%;
+    --sidebar-ring: 18 100% 60%;
+  }
+
+  * {
+    @apply border-border;
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 3px;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  html, body {
+    height: 100%;
+  }
+
+  #root {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@layer components {
+  @keyframes pulse-ring {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 0 20px rgba(255, 107, 53, 0);
+    }
+  }
+
+  @keyframes spin-loader {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes save-flash {
+    0% { box-shadow: 0 0 0 0 rgba(0, 217, 163, 0.6); }
+    100% { box-shadow: 0 0 0 8px rgba(0, 217, 163, 0); }
+  }
+
+  .record-btn-recording {
+    animation: pulse-ring 1.2s ease-in-out infinite;
+  }
+
+  .spin-animation {
+    animation: spin-loader 0.8s linear infinite;
+  }
+
+  .save-flash {
+    animation: save-flash 0.4s ease-out;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Module badge colors */
+  .module-voice  { background-color: rgba(255,107,53,0.18); color: #ff6b35; border-color: rgba(255,107,53,0.35); }
+  .module-photo  { background-color: rgba(0,217,163,0.18);  color: #00d9a3; border-color: rgba(0,217,163,0.35); }
+  .module-gps    { background-color: rgba(33,150,243,0.18); color: #42a5f5; border-color: rgba(33,150,243,0.35); }
+  .module-manual { background-color: rgba(156,39,176,0.18); color: #ce93d8; border-color: rgba(156,39,176,0.35); }
+}
